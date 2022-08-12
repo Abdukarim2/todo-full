@@ -3,6 +3,6 @@ npm install
 #
 create database todoapp
 #
-create tabe todos db\db.sql 
+create table todos db\db.sql 
 #
 edit db/index.js 
