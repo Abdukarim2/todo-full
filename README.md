@@ -1,15 +1,8 @@
 # todo-full
-Backend node js,  database postgresql, frontend vue js
+npm install
 #
-npm install 
+create database todoapp
 #
-create postgresql database todoapp
+create tabe todos db\db.sql 
 #
-db/ index.js
-const poll = new Poll({
-    user:"postgres", // your username
-    password:"password", // your password
-    host:"localhost",
-    port:5432, 
-    database:"todoapp" 
-})
+edit db/index.js 
