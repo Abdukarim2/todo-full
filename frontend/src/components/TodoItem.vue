@@ -1,14 +1,19 @@
 <template>
-    <a class="todo-item">
-        <h1>Title</h1>
+    <router-link :to="'/detail/' + todo.id " class="todo-item">
+        <h1>{{todo.title}}</h1>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam est fuga tempora vero deleniti provident, voluptatibus quaerat illo, laborum nostrum odio amet molestias corporis deserunt dolor illum? Earum, numquam libero.
+            {{todo.body}}
         </p>
-    </a>
+    </router-link>
 </template>
 <script>
 export default {
-  name:"TodoItem"  
+  name:"TodoItem",
+  props:{
+    todo:{
+        type:Object,
+    }
+  }
 }
 </script>
 <style>

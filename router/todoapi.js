@@ -9,14 +9,15 @@ router.get("/getall", async (req, res)=>{
 
 router.post("/add", async (req, res) =>{
     const {title, body} = req.body
-    await db.query(`INSERT INTO todos(title, body) VALUES ('${title}', '${body}');`)
-    res.json("ok")
+    const todo = await db.query(`INSERT INTO todos(title, body) VALUES ('${title}', '${body}') RETURNING * `)
+    res.json(todo.rows)
 })
 
 router.get("/get/:id", async (req, res) => {
     const id = req.params.id
-    const detail = await db.query(`SELECT * FROM todos WHERE id =${id}`)
+    const detail = await db.query(`SELECT * FROM todos WHERE id = ${id}`)
     res.json(detail.rows)
+    
 })
 
 module.exports = router

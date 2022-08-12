@@ -2,19 +2,36 @@
     <div class="detail-container">
         <div class="title">
             <h1>
-                tile
+                {{todo.title}}
             </h1>
         </div>
         <div class="body">
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi harum officia architecto fugit. Dicta ea vero consequatur excepturi quo sint nostrum nisi quas impedit ab officiis quam dolores, porro repellat!
+                {{todo.body}}
             </p>
         </div>
     </div>
 </template>
 <script>
+import axios from  "axios"
 export default {
-    
+    data (){
+        return {
+            todo:{},
+        }
+    },
+    beforeMount (){
+        this.getDetail()    
+    },
+    methods:{
+        async getDetail(){
+            let id = this.$route.params.id;
+            await axios.get(`http://127.168.1:8000/api/get/${id}/`)
+            .then( response =>{
+                this.todo = response.data[0]
+            })
+        }
+    }
 }
 </script>
 <style>
